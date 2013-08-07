@@ -16,6 +16,9 @@
 		5B0C138817B23D5700C9D507 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B0C138717B23D5700C9D507 /* Default.png */; };
 		5B0C138A17B23D5700C9D507 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B0C138917B23D5700C9D507 /* Default@2x.png */; };
 		5B0C138C17B23D5700C9D507 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B0C138B17B23D5700C9D507 /* Default-568h@2x.png */; };
+		5B0C139717B23D9700C9D507 /* MSGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C139417B23D9700C9D507 /* MSGridView.m */; };
+		5B0C139817B23D9700C9D507 /* MSGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C139617B23D9700C9D507 /* MSGridViewCell.m */; };
+		5B0C13B317B23DFA00C9D507 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C13B217B23DFA00C9D507 /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,12 @@
 		5B0C138717B23D5700C9D507 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5B0C138917B23D5700C9D507 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5B0C138B17B23D5700C9D507 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5B0C139317B23D9700C9D507 /* MSGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridView.h; sourceTree = "<group>"; };
+		5B0C139417B23D9700C9D507 /* MSGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridView.m; sourceTree = "<group>"; };
+		5B0C139517B23D9700C9D507 /* MSGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridViewCell.h; sourceTree = "<group>"; };
+		5B0C139617B23D9700C9D507 /* MSGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridViewCell.m; sourceTree = "<group>"; };
+		5B0C13B117B23DFA00C9D507 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		5B0C13B217B23DFA00C9D507 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +87,12 @@
 		5B0C137B17B23D5700C9D507 /* MSGridView */ = {
 			isa = PBXGroup;
 			children = (
+				5B0C139217B23D6200C9D507 /* MSGridView */,
 				5B0C138417B23D5700C9D507 /* AppDelegate.h */,
 				5B0C138517B23D5700C9D507 /* AppDelegate.m */,
 				5B0C137C17B23D5700C9D507 /* Supporting Files */,
+				5B0C13B117B23DFA00C9D507 /* RootViewController.h */,
+				5B0C13B217B23DFA00C9D507 /* RootViewController.m */,
 			);
 			path = MSGridView;
 			sourceTree = "<group>";
@@ -97,6 +109,17 @@
 				5B0C138B17B23D5700C9D507 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5B0C139217B23D6200C9D507 /* MSGridView */ = {
+			isa = PBXGroup;
+			children = (
+				5B0C139317B23D9700C9D507 /* MSGridView.h */,
+				5B0C139417B23D9700C9D507 /* MSGridView.m */,
+				5B0C139517B23D9700C9D507 /* MSGridViewCell.h */,
+				5B0C139617B23D9700C9D507 /* MSGridViewCell.m */,
+			);
+			name = MSGridView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +189,9 @@
 			files = (
 				5B0C138217B23D5700C9D507 /* main.m in Sources */,
 				5B0C138617B23D5700C9D507 /* AppDelegate.m in Sources */,
+				5B0C139717B23D9700C9D507 /* MSGridView.m in Sources */,
+				5B0C139817B23D9700C9D507 /* MSGridViewCell.m in Sources */,
+				5B0C13B317B23DFA00C9D507 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
