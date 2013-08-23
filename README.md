@@ -61,10 +61,14 @@ Option methods:
     // the size of an individual grid cell row / column. Default is the view width / number rows or columns
     -(float)heightForCellRowAtIndex:(NSUInteger)row forGridAtIndexPath:(NSIndexPath *)gridIndexPath;
     -(float)widthForCellColumnAtIndex:(NSUInteger)column forGridAtIndexPath:(NSIndexPath *)gridIndexPath;
+     
+    // detect a touch event on a cell
+    -(void)didSelectCellWithIndexPath:(NSIndexPath*) indexPath;
     
 Custom MSGridViewCells
 
 Just subclass MSGridViewCell and modify in the same way as a custom UIViewCell. At current this is just an empty UIView so there are no default labels etc.
+Make sure you init with - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)identifier.
 
 Demo
 ----
