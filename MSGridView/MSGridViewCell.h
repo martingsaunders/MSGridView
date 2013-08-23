@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#define contentbuffer 2
 @interface MSGridViewCell : UIView <UIGestureRecognizerDelegate>
 @property (nonatomic,strong) NSString *reuseIdentifier;
+@property (nonatomic,strong) UIView *contentView;
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)identifier;
 @end

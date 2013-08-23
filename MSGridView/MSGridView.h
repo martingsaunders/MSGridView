@@ -34,14 +34,12 @@
 @protocol MSGridViewDelegate <NSObject>
 
 @optional
-// the gap between individual super grids
--(CGSize)spacingBetweenGrids;
+
 // the size of an individual grid cell
 -(float)heightForCellRowAtIndex:(NSUInteger)row forGridAtIndexPath:(NSIndexPath *)gridIndexPath;
 -(float)widthForCellColumnAtIndex:(NSUInteger)column forGridAtIndexPath:(NSIndexPath *)gridIndexPath;
+-(void)didSelectCellWithIndexPath:(NSIndexPath*) indexPath;
 
-// the internal spacing between cells within a supergrid
--(CGSize)spacingBeweenCellsForGridAtIndexPath:(NSIndexPath*)indexPath;
 @end
 
 
@@ -51,5 +49,6 @@
 @property (nonatomic,weak) id <MSGridViewDataSource> gridViewDataSource;
 -(void)setInnerSpacing:(CGSize)innerSpacing;
 -(void)reloadData;
+-(NSIndexPath *)indexPathForCell:(MSGridViewCell *)cell;
 +(MSGridViewCell *)dequeueReusableCellWithIdentifier:(NSString *)CellIdentifier;
 @end

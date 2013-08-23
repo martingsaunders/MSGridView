@@ -92,5 +92,26 @@
     return 3;
 }
 
+/*
+ * If you want to specify a height
+ *
+ 
+ 
+-(float)heightForCellRowAtIndex:(NSUInteger)row forGridAtIndexPath:(NSIndexPath *)gridIndexPath
+{
+    NSLog(@"call");
+    return self.view.frame.size.width*1.2/3;
+}
+*/
+
+
+-(void)didSelectCellWithIndexPath:(NSIndexPath*) indexPath
+{
+
+    int index = [indexPath indexAtPosition:2]*3+[indexPath indexAtPosition:3];
+    NSLog(@"index: %i",index);
+    
+    [[[UIAlertView alloc] initWithTitle:@"Tapped" message:[NSString stringWithFormat:@"You tapped cell %i in grid (%i,%i)",index,[indexPath indexAtPosition:0],[indexPath indexAtPosition:1]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
+}
 
 @end

@@ -16,7 +16,7 @@
     int gridColumns;
     NSMutableDictionary *gridCells;
     CGSize innerSpacing;
-
+    
 }
 
 @end
@@ -27,7 +27,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-
+        
         // basic grid properties
         gridRows = 1;
         gridColumns = 1;
@@ -37,23 +37,20 @@
         
         gridCells = [NSMutableDictionary dictionary];
         
-        // setup an empty 
         
-        
-        //cellQueue = [NSMutableDictionary dictionary];
         
         self.pagingEnabled = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         
         [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-        [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(deviceOrientationDidChange:) name: UIDeviceOrientationDidChangeNotification object: nil];
+         [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(deviceOrientationDidChange:) name: UIDeviceOrientationDidChangeNotification object: nil];
     }
     return self;
 }
 
 -(void)reloadData
 {
-   
+    NSLog(@"reloading");
     [self layoutSubviews];
     
 }
@@ -61,7 +58,7 @@
 
 -(void)layoutSubviews
 {
-     [super layoutSubviews];
+    [super layoutSubviews];
     
     // basic grid properties
     if([self.gridViewDataSource respondsToSelector:@selector(numberOfGridRows)])
@@ -82,7 +79,7 @@
     
     // loop through super grids and add cells to grids array
     
-// current grid indexpath
+    // current grid indexpath
     
     NSUInteger currIntArray[] = {floor(viewCenter.y/self.frame.size.height),floor(viewCenter.x/self.frame.size.width)};
     NSIndexPath *currentGridIndexPath = [NSIndexPath indexPathWithIndexes:currIntArray length:2];
@@ -112,7 +109,7 @@
     
     
     
-
+    
     
     // just the ones we want
     for(int r=MAX(0,minGridRow);r<MIN(gridRows,maxGridRow+1);r++) {
@@ -138,7 +135,7 @@
                 subGridCols = [self.gridViewDataSource numberOfColumnsForGridAtIndexPath:gridIndexPath];
             }
             
-
+            
             
             for(int sr = 0;sr<subGridRows;sr++) {
                 
@@ -147,8 +144,8 @@
                     NSUInteger cellIntegerArray[] = {sr,sc};
                     NSIndexPath *cellIndexPath = [NSIndexPath indexPathWithIndexes:cellIntegerArray length:2];
                     
-                   
-
+                    
+                    
                     // cell width
                     
                     float w = (self.frame.size.width -innerSpacing.width)/(float)subGridCols;
@@ -156,10 +153,11 @@
                         w = [self.gridViewDelegate widthForCellColumnAtIndex:sc forGridAtIndexPath:gridIndexPath];
                     }
                     
-//                    cell height
+                    //                    cell height
                     
                     float h = (self.frame.size.height-innerSpacing.height)/subGridCols;
-                    if([self.gridViewDelegate respondsToSelector:@selector(widthForCellColumnAtIndexPath:forGridAtIndexPath:)]) {
+                    if([self.gridViewDelegate respondsToSelector:@selector(heightForCellRowAtIndex:forGridAtIndexPath:)]) {
+                        NSLog(@"here");
                         h = [self.gridViewDelegate heightForCellRowAtIndex:sr forGridAtIndexPath:gridIndexPath];
                     }
                     
@@ -170,13 +168,13 @@
                        x+w/2 < viewCenter.x+self.frame.size.width &&
                        y+h/2 > viewCenter.y-self.frame.size.height &&
                        y+h/2 < viewCenter.y+self.frame.size.height) {
-
+                        
                         // create cell
                         MSGridViewCell *cell = [self.gridViewDataSource cellForIndexPath:cellIndexPath inGridWithIndexPath:gridIndexPath];
                         
                         if(cell != nil) {
                             [cell setFrame:CGRectMake(x,y , w, h)];
-
+                            
                             [self.class queueCell:cell];
                             
                             
@@ -212,18 +210,21 @@
     
     
     
+#if DEBUG
     NSLog(@"cols: %i, rows: %i",gridColumns,gridRows);
     NSLog(@"number of real cells: %i",[gridCells count]);
     NSLog(@"queue length: %i",[[[self.class reuseQueue] objectForKey:@"cell" ] count]);
+#endif
+    
     [self setContentSize:CGSizeMake(self.frame.size.width*gridColumns, self.frame.size.height * gridRows)];
     
-
+    
     
 }
 
 -(void)setInnerSpacing:(CGSize)innerSpace
 {
-
+    
     innerSpacing = innerSpace;
     
     CGRect f = self.frame;
@@ -271,6 +272,7 @@
 
 -(void)deviceOrientationDidChange:(NSNotification *)notification
 {
+    
     if(self.pagingEnabled) {
         CGPoint viewCenter;
         viewCenter.x = [self contentOffset].x+(self.frame.size.width + innerSpacing.width)/2;
@@ -278,8 +280,13 @@
         
         [self setContentOffset:CGPointMake(floor(viewCenter.x/self.frame.size.width)*self.frame.size.width, floor(viewCenter.y/self.frame.size.height)*self.frame.size.height) animated:NO];
         
-
+        
     }
+}
+
+-(NSIndexPath *)indexPathForCell:(MSGridViewCell *)cell
+{
+    return [[gridCells allKeysForObject:cell] lastObject];
 }
 
 
