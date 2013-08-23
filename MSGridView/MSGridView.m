@@ -50,7 +50,7 @@
 
 -(void)reloadData
 {
-    NSLog(@"reloading");
+    
     [self layoutSubviews];
     
 }
@@ -75,7 +75,7 @@
     viewCenter.x = [self contentOffset].x+(self.frame.size.width + innerSpacing.width)/2;
     viewCenter.y = [self contentOffset].y+(self.frame.size.height + innerSpacing.height)/2;
     
-    NSLog(@"View Center: %f,%f. Num cells: %i",viewCenter.x,viewCenter.y,[gridCells count]);
+    //NSLog(@"View Center: %f,%f. Num cells: %i",viewCenter.x,viewCenter.y,[gridCells count]);
     
     // loop through super grids and add cells to grids array
     
@@ -84,7 +84,7 @@
     NSUInteger currIntArray[] = {floor(viewCenter.y/self.frame.size.height),floor(viewCenter.x/self.frame.size.width)};
     NSIndexPath *currentGridIndexPath = [NSIndexPath indexPathWithIndexes:currIntArray length:2];
     
-    NSLog(@"current grid: %@",currentGridIndexPath);
+   // NSLog(@"current grid: %@",currentGridIndexPath);
     // loop through gridCells and remove / queue not allowed cells
     NSArray *a = [gridCells allKeys];
     
@@ -157,7 +157,7 @@
                     
                     float h = (self.frame.size.height-innerSpacing.height)/subGridCols;
                     if([self.gridViewDelegate respondsToSelector:@selector(heightForCellRowAtIndex:forGridAtIndexPath:)]) {
-                        NSLog(@"here");
+                     
                         h = [self.gridViewDelegate heightForCellRowAtIndex:sr forGridAtIndexPath:gridIndexPath];
                     }
                     
@@ -211,9 +211,9 @@
     
     
 #if DEBUG
-    NSLog(@"cols: %i, rows: %i",gridColumns,gridRows);
-    NSLog(@"number of real cells: %i",[gridCells count]);
-    NSLog(@"queue length: %i",[[[self.class reuseQueue] objectForKey:@"cell" ] count]);
+   // NSLog(@"cols: %i, rows: %i",gridColumns,gridRows);
+   // NSLog(@"number of real cells: %i",[gridCells count]);
+   // NSLog(@"queue length: %i",[[[self.class reuseQueue] objectForKey:@"cell" ] count]);
 #endif
     
     [self setContentSize:CGSizeMake(self.frame.size.width*gridColumns, self.frame.size.height * gridRows)];
