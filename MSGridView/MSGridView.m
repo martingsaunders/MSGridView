@@ -95,10 +95,10 @@
     for(NSIndexPath *ip in a) {
         
         // row
-        if([ip indexAtPosition:0] < minGridRow ||
-           [ip indexAtPosition:0] > maxGridRow ||
-           [ip indexAtPosition:1] < minGridColumn ||
-           [ip indexAtPosition:1] > maxGridColumn
+        if((int)[ip indexAtPosition:0] < minGridRow ||
+           (int)[ip indexAtPosition:0] > maxGridRow ||
+           (int)[ip indexAtPosition:1] < minGridColumn ||
+           (int)[ip indexAtPosition:1] > maxGridColumn
            ) {
             MSGridViewCell *cell = [gridCells objectForKey:ip];
             [cell removeFromSuperview];
