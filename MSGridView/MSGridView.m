@@ -289,5 +289,9 @@
     return [[gridCells allKeysForObject:cell] lastObject];
 }
 
-
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+}
 @end
